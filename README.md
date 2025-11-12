@@ -1,14 +1,16 @@
-# Neon Sphere Scroll Animation
+# Liquid Neon Sphere - Organic Scroll Animation
 
-A dynamic, full-screen web design featuring a glowing neon sphere with scroll-based interactive animations. Built with Three.js and modern web technologies.
+A mesmerizing, full-screen web experience featuring a living sphere of liquid neon with organic, bioluminescent animations. Built with Three.js and modern web technologies.
 
 ## Features
 
 - **Split-Screen Layout**: Sphere fixed on the left half, scrollable content on the right
-- **3D Neon Sphere**: Glossy, reflective surface with organic flowing neon line patterns
-- **Scroll-Based Animation**: Line patterns rotate smoothly based on scroll velocity
-- **Dynamic Colors**: Fluid transitions between magenta, pink, blue, and cyan
-- **Cyberpunk Aesthetic**: Dark theme with high contrast neon effects
+- **Organic Liquid Neon**: Smooth, flowing patterns that move like plasma across the sphere
+- **Bioluminescent Particles**: Internal glowing nodes floating within the sphere for depth
+- **Scroll-Based Morphing**: Fluid shapes rotate and breathe based on scroll velocity
+- **Ethereal Colors**: Seamless transitions through cyan, magenta, pink, blue, and purple
+- **Soft Diffused Glow**: Multiple layers of ambient light creating an organic atmosphere
+- **Natural Aesthetic**: Less geometric, more organic - like watching bioluminescent life forms
 - **Responsive Design**: Adapts to different screen sizes
 
 ## Technologies Used
@@ -49,65 +51,87 @@ The production-ready files will be in the `dist` directory.
 
 ## How It Works
 
-### The Sphere
+### The Organic Sphere
 
 The sphere is created using Three.js with:
 - `SphereGeometry` for the base shape
-- `MeshPhysicalMaterial` for glossy, reflective surface
-- Point lights for neon glow effects
-- Multiple `TubeGeometry` curves for flowing neon lines
+- `MeshPhysicalMaterial` with transmission for ethereal depth
+- Multiple colored point lights for organic glow effects
+- Variable-thickness `TubeGeometry` curves for liquid-like patterns
+- Complex wave functions and noise for organic flow
+- Internal particle system with floating animation
 
-### Scroll Animation
+### Scroll-Based Morphing
 
-- Scroll events track velocity
-- Rotation speed correlates with scroll speed
-- Smooth damping prevents jarring movements
-- Continuous slow rotation when idle
+- Scroll events track velocity for responsive rotation
+- Fluid shapes rotate and scale dynamically
+- Smooth damping creates natural, organic movement
+- Continuous breathing animation when idle
+- Subtle camera movement enhances organic feel
 
 ### Color Transitions
 
-- Colors cycle through magenta → pink → blue → cyan
-- Smooth interpolation between colors
-- Each line has offset timing for wave effect
-- Pulsing opacity for dynamic glow
+- Colors cycle through entire palette: cyan → magenta → pink → blue → purple
+- Smooth color interpolation using lerp functions
+- Each curve and particle has unique timing offsets
+- Pulsing opacity and emissive intensity for living glow
+- Multiple color layers create depth and richness
 
 ## Customization
 
 ### Adjusting Colors
 
-Edit the `neonColors` array in `js/main.js`:
+Edit the `neonColors` array in `js/main.js:52`:
 
 ```javascript
 const neonColors = [
+    new THREE.Color(0x00ffff), // Cyan
     new THREE.Color(0xff00ff), // Magenta
     new THREE.Color(0xff0080), // Pink
     new THREE.Color(0x0080ff), // Blue
-    new THREE.Color(0x00ffff), // Cyan
+    new THREE.Color(0x8000ff), // Purple
+    new THREE.Color(0xff00aa), // Hot pink
 ];
 ```
 
-### Changing Sphere Size
+### Changing Sphere Properties
 
-Modify the sphere radius in `js/main.js`:
+Modify sphere properties in `js/main.js:36`:
 
 ```javascript
-const sphereGeometry = new THREE.SphereGeometry(1.5, 64, 64);
+const sphereGeometry = new THREE.SphereGeometry(1.5, 64, 64); // Radius, width, height segments
 ```
 
-### Adjusting Rotation Speed
+### Adjusting Organic Flow
 
-Change the scroll velocity multiplier:
+Change wave complexity in the `createOrganicFluidCurve` function (`js/main.js:80-83`):
 
 ```javascript
-scrollVelocity = (currentScrollY - lastScrollY) * 0.001; // Increase for faster
+const wave1 = Math.sin(angle * 2.5 + seed + time * 0.3) * 0.4; // Adjust multipliers for different patterns
 ```
 
-### Adding More Lines
+### Animation Speed
 
-Increase the `curveCount` variable:
+Modify the time increment in `js/main.js:229`:
 
 ```javascript
-const curveCount = 12; // Increase for more lines
+time += 0.008; // Increase for faster animation
+```
+
+### Adding More Curves
+
+Increase the `curveCount` variable in `js/main.js:167`:
+
+```javascript
+const curveCount = 15; // More curves = denser organic patterns
+```
+
+### Particle Count
+
+Adjust internal glowing particles in `js/main.js:176`:
+
+```javascript
+const particleCount = 40; // More particles = richer depth
 ```
 
 ## Browser Compatibility
@@ -122,9 +146,11 @@ Requires WebGL support.
 ## Performance
 
 The animation runs at 60 FPS on modern hardware. For better performance on lower-end devices:
-- Reduce `curveCount`
-- Lower sphere geometry segments
-- Decrease `window.devicePixelRatio` cap
+- Reduce `curveCount` (fewer organic curves)
+- Lower `particleCount` (fewer internal particles)
+- Reduce sphere geometry segments (lower quality but faster)
+- Decrease tube segments in `createOrganicFluidCurve` function
+- Reduce `window.devicePixelRatio` cap for lower resolution rendering
 
 ## License
 
