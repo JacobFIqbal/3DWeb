@@ -44,93 +44,94 @@ body {
     display: block;
 }
 
-/* Enhanced Organic Glow Effects */
+/* Contained Sphere Glow Effects */
 .sphere-glow {
     position: absolute;
-    width: 80%;
-    height: 80%;
+    width: 70%;
+    height: 70%;
     border-radius: 50%;
     background: radial-gradient(
         circle,
-        rgba(255, 0, 255, 0.4) 0%,
-        rgba(0, 255, 255, 0.35) 20%,
-        rgba(128, 0, 255, 0.25) 35%,
-        rgba(255, 0, 170, 0.2) 50%,
-        rgba(0, 128, 255, 0.15) 65%,
-        transparent 80%
+        rgba(255, 0, 255, 0.5) 0%,
+        rgba(0, 255, 255, 0.4) 15%,
+        rgba(128, 0, 255, 0.3) 30%,
+        rgba(255, 0, 170, 0.2) 45%,
+        rgba(0, 128, 255, 0.15) 60%,
+        transparent 75%
     );
-    filter: blur(80px);
+    filter: blur(60px);
     pointer-events: none;
-    animation: organic-pulse 6s ease-in-out infinite;
+    animation: contained-pulse 6s ease-in-out infinite;
 }
 
-@keyframes organic-pulse {
+@keyframes contained-pulse {
     0%, 100% {
-        transform: scale(1) rotate(0deg);
-        opacity: 0.7;
+        transform: scale(1);
+        opacity: 0.8;
     }
-    33% {
-        transform: scale(1.15, 1.05) rotate(5deg);
-        opacity: 0.85;
-    }
-    66% {
-        transform: scale(1.05, 1.15) rotate(-5deg);
-        opacity: 0.75;
+    50% {
+        transform: scale(1.08);
+        opacity: 0.9;
     }
 }
 
-/* Additional ambient glow layers */
+/* Circular ambient glow - defines sphere boundary */
 .sphere-container::before {
     content: '';
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 75%;
+    height: 75%;
+    border-radius: 50%;
     background: radial-gradient(
-        ellipse at center,
-        rgba(0, 255, 255, 0.15) 0%,
-        rgba(255, 0, 255, 0.12) 25%,
-        transparent 60%
+        circle at center,
+        rgba(0, 255, 255, 0.2) 0%,
+        rgba(255, 0, 255, 0.15) 20%,
+        rgba(128, 0, 255, 0.1) 40%,
+        transparent 65%
     );
-    filter: blur(100px);
+    filter: blur(70px);
     animation: ambient-glow 8s ease-in-out infinite alternate;
     pointer-events: none;
 }
 
 @keyframes ambient-glow {
     0% {
-        opacity: 0.5;
-        transform: scale(0.9);
+        opacity: 0.6;
+        transform: scale(0.95);
     }
     100% {
-        opacity: 0.8;
-        transform: scale(1.1);
+        opacity: 0.85;
+        transform: scale(1.05);
     }
 }
 
+/* Secondary circular glow layer */
 .sphere-container::after {
     content: '';
     position: absolute;
-    width: 90%;
-    height: 90%;
+    width: 65%;
+    height: 65%;
+    border-radius: 50%;
     background: radial-gradient(
         circle,
-        rgba(255, 0, 170, 0.2) 0%,
-        rgba(128, 0, 255, 0.15) 30%,
-        transparent 70%
+        rgba(255, 0, 170, 0.25) 0%,
+        rgba(128, 0, 255, 0.2) 25%,
+        rgba(0, 255, 255, 0.15) 50%,
+        transparent 75%
     );
-    filter: blur(120px);
+    filter: blur(80px);
     animation: secondary-glow 10s ease-in-out infinite;
     pointer-events: none;
 }
 
 @keyframes secondary-glow {
     0%, 100% {
-        opacity: 0.4;
-        transform: scale(1) rotate(0deg);
+        opacity: 0.5;
+        transform: scale(1);
     }
     50% {
-        opacity: 0.7;
-        transform: scale(1.2) rotate(180deg);
+        opacity: 0.75;
+        transform: scale(1.1);
     }
 }
 
